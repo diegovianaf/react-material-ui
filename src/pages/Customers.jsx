@@ -1,3 +1,4 @@
+import { Container, Grid } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CustomerCard from '../components/CustomerCard'
@@ -17,17 +18,21 @@ const Customers = () => {
   return (
     <>
       <h1>Customers</h1>
-      {
-        customers.map((item) => (
-          <CustomerCard
-            key={item.id}
-            firstName={item.first_name}
-            lastName={item.last_name}
-            email={item.email}
-            avatar={item.avatar}
-          />
-        ))
-      }
+      <Grid container spacing={{ xs: 2, md: 3 }}>
+        {
+          customers.map((item) => (
+            <Grid item xs={12} sm={6} md={4} key={item.id}>
+              <CustomerCard
+                // key={item.id}
+                firstName={item.first_name}
+                lastName={item.last_name}
+                email={item.email}
+                avatar={item.avatar}
+              />
+            </Grid>
+          ))
+        }
+      </Grid>
     </>
   )
 }
