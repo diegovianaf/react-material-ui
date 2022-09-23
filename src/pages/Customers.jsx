@@ -1,4 +1,4 @@
-import { Container, Grid } from '@mui/material'
+import { Grid } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import CustomerCard from '../components/CustomerCard'
