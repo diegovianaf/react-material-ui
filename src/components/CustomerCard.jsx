@@ -5,10 +5,12 @@ import ModalConfirm from './ModalConfirm'
 import { useState } from 'react'
 
 const CustomerCard = ({
+  id,
   firstName,
   lastName,
   email,
   avatar,
+  onDeleteCustomer,
 }) => {
   const [openModal, setOpenModal] = useState(false)
 
@@ -16,8 +18,9 @@ const CustomerCard = ({
     setOpenModal(!openModal)
   }
 
-  const handleConfirmModal = () => {
-    alert('ok')
+  const handleConfirmModal = (id) => {
+    onDeleteCustomer(id)
+    handleToggleModalConfirm()
   }
 
   const handleDeleteCustomer = () => {
@@ -29,9 +32,7 @@ const CustomerCard = ({
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar aria-label="customer" src={avatar}>
-              R
-            </Avatar>
+            <Avatar aria-label="customer" src={avatar} />
           }
           title={`${firstName} ${lastName}`}
           subheader={email}
@@ -51,7 +52,7 @@ const CustomerCard = ({
       <ModalConfirm
         open={openModal}
         onClose={handleToggleModalConfirm}
-        onConfirm={handleConfirmModal}
+        onConfirm={() => handleConfirmModal(id)}
         title="Are you sure you want to delete it?"
         message="By confirming it is not possible to reverse this action"
       />
