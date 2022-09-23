@@ -5,14 +5,14 @@ import TemplateDefault from './templates/TemplateDefault'
 
 function App() {
   return (
-    <TemplateDefault>
-      <BrowserRouter>
+    <BrowserRouter>
+     <TemplateDefault>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/customers' element={<Customers />} />
         </Routes>
-      </BrowserRouter>
-    </TemplateDefault>
+      </TemplateDefault>
+    </BrowserRouter>
   )
 }
 
