@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import CustomerCard from '../components/CustomerCard'
+import CustomerCard from '../../components/CustomerCard'
 
-const Customers = () => {
+const List = () => {
   const [customers, setCustomers] = useState([])
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Customers = () => {
 
   return (
     <>
-      <h1>Customers</h1>
+      <h2>Customers List</h2>
       <Grid container spacing={{ xs: 2, md: 3 }}>
         {
           customers.map((item) => (
@@ -47,4 +47,4 @@ const Customers = () => {
   )
 }
 
-export default Customers
+export default List
