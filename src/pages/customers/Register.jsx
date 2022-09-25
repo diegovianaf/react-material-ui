@@ -1,6 +1,7 @@
 import { Button, TextField } from '@mui/material'
 import axios from 'axios'
 import { useState } from 'react'
+import Toasty from '../../components/Toasty'
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -14,6 +15,9 @@ const Register = () => {
     },
   })
 
+  const [openToasty, setOpenToasty] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
 
@@ -26,6 +30,8 @@ const Register = () => {
   }
 
   const handleRegisterButton = () => {
+    setIsLoading(true)
+
     let hasError = false
 
     let newFormState = {
@@ -57,8 +63,9 @@ const Register = () => {
     axios.post('https://reqres.in/api/users', {
       firstName: form.firstName.value,
       jobPosition: form.jobPosition.value,
-    }).then((response) => {
-      console.log('ok', response)
+    }).then(() => {
+      setIsLoading(false)
+      setOpenToasty(true)
     })
   }
 
@@ -93,10 +100,19 @@ const Register = () => {
           color="primary"
           style={{marginTop: '1rem'}}
           onClick={handleRegisterButton}
+          disabled={isLoading}
         >
-          Register
+          {
+            isLoading ? 'Loading...' : 'Register'
+          }
         </Button>
       </div>
+      <Toasty
+        open={openToasty}
+        severety='success'
+        message='Registration completed successfully!'
+        onClose={() => setOpenToasty(false)}
+      />
     </>
   )
 }
