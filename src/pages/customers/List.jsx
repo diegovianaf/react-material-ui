@@ -1,9 +1,12 @@
 import { Grid } from '@mui/material'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import CustomerCard from '../../components/CustomerCard'
 
 const List = () => {
+  const navigate = useNavigate()
+
   const [customers, setCustomers] = useState([])
 
   useEffect(() => {
@@ -24,6 +27,10 @@ const List = () => {
       })
   }
 
+  const handleEditCustomer = (id) => {
+    navigate(`/customers/edit/${id}`)
+  }
+
   return (
     <>
       <h2>Customers List</h2>
@@ -38,6 +45,7 @@ const List = () => {
                 email={item.email}
                 avatar={item.avatar}
                 onDeleteCustomer={handleDeleteCustomer}
+                onEditCustomer={handleEditCustomer}
               />
             </Grid>
           ))
