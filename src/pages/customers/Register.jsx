@@ -76,7 +76,7 @@ const Register = () => {
         <TextField
           error={form.firstName.error}
           helperText={form.firstName.error ? form.firstName.helperText : ''}
-          label="Enter your name"
+          label="Enter your first name"
           variant="standard"
           name="firstName"
           value={form.firstName.value}
