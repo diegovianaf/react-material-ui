@@ -64,20 +64,20 @@ const Header = () => {
               Home
             </ListItemText>
           </ListItem>
-          <ListItem button onClick={() => handleMenuClick('customers')}>
+          <ListItem button onClick={() => handleMenuClick('users')}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
             <ListItemText>
-              Customers List
+              Users List
             </ListItemText>
           </ListItem>
-          <ListItem button onClick={() => handleMenuClick('customers/add')}>
+          <ListItem button onClick={() => handleMenuClick('users/add')}>
             <ListItemIcon>
               <PersonAddIcon />
             </ListItemIcon>
             <ListItemText>
-              Add New Customers
+              Add New Users
             </ListItemText>
           </ListItem>
         </List>

@@ -1,12 +1,9 @@
 import { Button, TextField } from '@mui/material'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useState } from 'react'
 import Toasty from '../../components/Toasty'
 
-const Edit = () => {
-  const { id } = useParams()
-
+const Register = () => {
   const [form, setForm] = useState({
     firstName: {
       value: '',
@@ -20,24 +17,6 @@ const Edit = () => {
 
   const [openToasty, setOpenToasty] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    axios.get(`https://reqres.in/api/users/${id}`)
-      .then((response) => {
-        const { data } = response.data
-
-        setForm({
-          firstName: {
-            value: data.first_name,
-            error: false,
-          },
-          jobPosition: {
-            value: data.job,
-            error: false,
-          },
-        })
-      })
-  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -81,7 +60,7 @@ const Edit = () => {
 
     if (hasError) setForm(newFormState)
   
-    axios.put(`https://reqres.in/api/users/${id}`, {
+    axios.post('https://reqres.in/api/users', {
       firstName: form.firstName.value,
       jobPosition: form.jobPosition.value,
     }).then(() => {
@@ -92,7 +71,7 @@ const Edit = () => {
 
   return (
     <>
-      <h2>Edit Customer</h2>
+      <h2>Add New Users</h2>
       <div>
         <TextField
           error={form.firstName.error}
@@ -124,18 +103,18 @@ const Edit = () => {
           disabled={isLoading}
         >
           {
-            isLoading ? 'Loading...' : 'Save'
+            isLoading ? 'Loading...' : 'Register'
           }
         </Button>
       </div>
       <Toasty
         open={openToasty}
         severety='success'
-        message='Registration updated successfully!'
+        message='Registration completed successfully!'
         onClose={() => setOpenToasty(false)}
       />
     </>
   )
 }
 
-export default Edit
+export default Register

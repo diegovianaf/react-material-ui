@@ -4,14 +4,14 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import ModalConfirm from './ModalConfirm'
 import { useState } from 'react'
 
-const CustomerCard = ({
+const UserCard = ({
   id,
   firstName,
   lastName,
   email,
   avatar,
-  onDeleteCustomer,
-  onEditCustomer,
+  onDeleteUser,
+  onEditUser,
 }) => {
   const [openModal, setOpenModal] = useState(false)
 
@@ -20,16 +20,16 @@ const CustomerCard = ({
   }
 
   const handleConfirmModal = (id) => {
-    onDeleteCustomer(id)
+    onDeleteUser(id)
     handleToggleModalConfirm()
   }
 
-  const handleDeleteCustomer = () => {
+  const handleDeleteUser = () => {
     handleToggleModalConfirm()
   }
   
-  const handleEditCustomer = (id) => {
-    onEditCustomer(id)
+  const handleEditUser = (id) => {
+    onEditUser(id)
   }
   
   return (
@@ -37,7 +37,7 @@ const CustomerCard = ({
       <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
-            <Avatar aria-label="customer" src={avatar} />
+            <Avatar aria-label="user" src={avatar} />
           }
           title={`${firstName} ${lastName}`}
           subheader={email}
@@ -45,13 +45,13 @@ const CustomerCard = ({
         <CardActions disableSpacing>
           <IconButton
             aria-label="edit user register"
-            onClick={() => handleEditCustomer(id)}
+            onClick={() => handleEditUser(id)}
           >
             <EditIcon />
           </IconButton>
           <IconButton 
             aria-label="delete register"
-            onClick={handleDeleteCustomer}
+            onClick={handleDeleteUser}
           >
             <DeleteIcon />
           </IconButton>
@@ -68,4 +68,4 @@ const CustomerCard = ({
   )
 }
 
-export default CustomerCard
+export default UserCard
