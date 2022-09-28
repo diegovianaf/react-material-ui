@@ -64,7 +64,7 @@ const Header = () => {
               Home
             </ListItemText>
           </ListItem>
-          <ListItem button onClick={() => handleMenuClick('users')}>
+          <ListItem button onClick={() => handleMenuClick('/users')}>
             <ListItemIcon>
               <PersonIcon />
             </ListItemIcon>
@@ -72,7 +72,7 @@ const Header = () => {
               Users List
             </ListItemText>
           </ListItem>
-          <ListItem button onClick={() => handleMenuClick('users/add')}>
+          <ListItem button onClick={() => handleMenuClick('/users/add')}>
             <ListItemIcon>
               <PersonAddIcon />
             </ListItemIcon>
