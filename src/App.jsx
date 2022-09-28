@@ -1,21 +1,57 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
+import Login from './pages/Login'
 import UsersEdit from './pages/users/Edit'
 import UsersList from './pages/users/List'
 import UsersRegister from './pages/users/Register'
+import Clean from './templates/Clean'
 import TemplatePage from './templates/TemplatePage'
 
 function App() {
   return (
     <BrowserRouter>
-      <TemplatePage>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/users' element={<UsersList />} />
-          <Route path='/users/add' element={<UsersRegister />} />
-          <Route path='/users/edit/:id' element={<UsersEdit />} />
-        </Routes>
-      </TemplatePage>
+      <Routes>
+        <Route
+          path='/'
+          element={
+            <TemplatePage>
+              <Home />
+            </TemplatePage>
+          }
+        />
+        <Route
+          path='/users'
+          element={
+            <TemplatePage>
+              <UsersList />
+            </TemplatePage>
+          }
+        />
+        <Route
+          path='/users/add'
+          element={
+            <TemplatePage>
+              <UsersRegister />
+            </TemplatePage>
+          }
+        />
+        <Route
+          path='/users/edit/:id'
+          element={
+            <TemplatePage>
+              <UsersEdit />
+            </TemplatePage>
+          }
+        />
+        <Route
+          path='/login'
+          element={
+            <Clean>
+              <Login />
+            </Clean>
+          }
+        />
+      </Routes>
     </BrowserRouter>
   )
 }
