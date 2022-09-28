@@ -1,7 +1,7 @@
 import { Container } from '@mui/material'
 import Header from '../partials/Header'
 
-const TemplateDefault = ({ children }) => {
+const TemplatePage = ({ children }) => {
   return (
     <>
       <Header />
@@ -12,4 +12,4 @@ const TemplateDefault = ({ children }) => {
   )
 }
 
-export default TemplateDefault
+export default TemplatePage
