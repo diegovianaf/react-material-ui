@@ -20,7 +20,7 @@ import HomeIcon from '@mui/icons-material/Home'
 import PersonIcon from '@mui/icons-material/Person'
 import PersonAddIcon from '@mui/icons-material/PersonAdd'
 
-const Header = () => {
+const Header = ({ user }) => {
   const navigate = useNavigate()
 
   const [menuOpen, setMenuOpen] = useState(false)
@@ -51,7 +51,11 @@ const Header = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React - Material UI
           </Typography>
-          <Button color="inherit">Login</Button>
+          {
+            user.logged
+              ? user.email
+              : <Button color="inherit">Login</Button>
+          }
         </Toolbar>
       </AppBar>
       <Drawer open={menuOpen} onClose={() => handleToggleMenu()}>

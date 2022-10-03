@@ -1,12 +1,20 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import useAuth from '../state/auth'
 
 const Login = () => {
+  const navigate = useNavigate()
+  
   const [form, setForm] = useState({
     email: '',
     password: '',
   })
+
+  const [isLoading, setIsLoading] = useState(false)
+
+  const { setUser } = useAuth()
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -18,7 +26,16 @@ const Login = () => {
   }
 
   const handleFormSubmit = () => {
-    console.log(form)
+    setIsLoading(true)
+
+    setTimeout(() => {
+      setUser({
+        logged: true,
+        email: form.email,
+      })
+
+      navigate('/')
+    }, 3000)
   }
 
   return (
@@ -48,7 +65,9 @@ const Login = () => {
           onChange={handleInputChange}
         />
         <Button color="primary" variant="contained" onClick={handleFormSubmit}>
-          Login
+          {
+            isLoading ? 'Loading...' : 'Login'
+          }
         </Button>
       </Box>
     </>
